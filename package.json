@@ -1,0 +1,12 @@
+{
+  "name": "anareabaena_trabajofinalmarcas",
+  "version": "1.0.0",
+  "description": "Trabajo final de la asignatura Lenguaje de marcas donde se crea una api con nodos",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
