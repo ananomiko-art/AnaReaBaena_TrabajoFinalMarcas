@@ -28,6 +28,15 @@ app.get("/personajes", (req, res)=>{ /*Si es barra personajes solo salen los per
 //buscar x id
 
 app.get("/personajes/:id", (req, res)=>{ //Esto es para poder especificar la id que buscas del personje
+
+    let i = req.params.id - 1
+
+    if(!Personajes[i]){
+        return res.status(404).json({
+            mensaje: "Personaje no encontrado"
+        })
+    }
+
     return res.json(Personajes[req.params.id - 1])
 })
 
@@ -110,7 +119,7 @@ app.post("/añadir-hechizo", (req, res)=>{ //Para añadir hechizos
         descripción: req.body.descripción
     }
 
-    personajes.push(nuevoHechizo); //Esto indica que añada el hehcizo
+    Hechizos.push(nuevoHechizo); //Esto indica que añada el hehcizo
     return res.status(201).json(nuevoHechizo)
 })
 
@@ -161,8 +170,9 @@ app.put("/personajes/:id", (req, res) => { //Esto modifica un registro que ya ex
     let i = req.params.id - 1 //guardo el id del que quieras modificar
 
     Personajes[i].nombre = req.body.nombre //pide los parametros del parametro que indique i
-    Personajes[i].tipo = req.body.tipo
-    Personajes[i].dificultad = req.body.dificultad
+    Personajes[i].casa = req.body.casa
+    Personajes[i].año = req.body.año
+    Personajes[i].huecos = req.body.huecos
 
     return res.json(Personajes[i]) //y los devuelve como respuesta a la api
 })
@@ -173,7 +183,7 @@ app.put("/personajes/:id", (req, res) => { //Esto modifica un registro que ya ex
 
 app.get("/personajes/:id/hechizos", (req, res) => {
 
-   let id = int(req.params.id) 
+   let id = parseInt(req.params.id) 
 
     let personaje = Personajes.find(p => p.id === id) //Uso .find para buscar el perosnaje, es más util que lo que estaba usando(busca en un array)
 
@@ -270,6 +280,18 @@ app.get("/estadisticas/casas", (req, res) => { //cuando la url dice que es /casa
     })
 
     res.json(resultado)
+})
+
+/*=====================================================================*/
+/*==============MANEJO DE ERRORES=====================*/
+
+app.use((err, req, res, next) => { //Esto indica que use esto en todo el codigo(guarda el error, petición,respuesta ynext es para lo del middleware)
+
+    console.error(err.stack)//Esto muestra el error en la consola
+
+    res.status(500).json({//Esto hace que te enseñe el error del server o sea el 500 que es el error interno del server
+        mensaje: "El wisengamot te indica que ha habido un error"
+    })
 })
 
 /*=====================================================================*/
