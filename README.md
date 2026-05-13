@@ -31,31 +31,32 @@ La API funciona en el puerto: 1987
 
 Compuesto de:
 
--nombre
--casa
--año
--huecos
--hechizo principal
+- nombre
+- casa
+- año
+- huecos
+- hechizo principal
 
 ## Hechizos
 
 Compuesto de:
 
--nombre
--tipo
--dificultad
--año de aprendizaje
--coste
--dado
--estadística usada
--descripción
+- nombre
+- tipo
+- dificultad
+- año de aprendizaje
+- coste
+- dado
+- estadística usada
+- descripción
 
 ---
+
 # Ejemplos de uso
 
 ## Mostrar todos los personajes
 
-GET http://localhost:1987/personajes
+GET 1987/personajes
 
 ## Añadir personaje
 
@@ -69,6 +70,6 @@ GET http://localhost:1987/personajes
 
 ## Elminiar personaje
 
-DELETE http://localhost:1987/personajes/1
+DELETE 1987/personajes/1
 
 ---
