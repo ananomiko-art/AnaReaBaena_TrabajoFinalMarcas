@@ -165,7 +165,7 @@ app.put("/hechizos/:id", (req, res) => { //Esto modifica un registro que ya exis
 
 /*======================Modificar personajes=======================*/
 
-app.put("/personajes/:id", (req, res) => { //Esto modifica un registro que ya existe
+app.put("/personajes/modificar-personaje", (req, res) => { //Esto modifica un registro que ya existe
 
     let i = req.params.id - 1 //guardo el id del que quieras modificar
 
@@ -285,7 +285,7 @@ app.get("/estadisticas/casas", (req, res) => { //cuando la url dice que es /casa
 /*=====================================================================*/
 /*==============MANEJO DE ERRORES=====================*/
 
-app.use((err, req, res, next) => { //Esto indica que use esto en todo el codigo(guarda el error, petición,respuesta ynext es para lo del middleware)
+app.use((err, req, res, next) => { //Esto indica que use esto en todo el codigo(guarda el error, petición,respuesta y next es para lo del middleware)
 
     console.error(err.stack)//Esto muestra el error en la consola
 
